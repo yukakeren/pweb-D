@@ -1,4 +1,4 @@
-# pweb-D
+# pweb-B
 
 ## Penugasan
 1. Minggu pertama: [WPM](pertemuan1/Pertemuan1_WPM.md)
