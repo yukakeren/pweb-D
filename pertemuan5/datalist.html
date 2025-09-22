@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Form Registrasi Mahasiswa</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #242c38;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    .form-container {
+      background: #fff;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+      width: 100%;
+      max-width: 400px;
+    }
+
+    .form-container h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #1e3c72;
+    }
+
+    label {
+      font-weight: bold;
+      color: #333;
+      display: block;
+      margin-top: 12px;
+      margin-bottom: 6px;
+    }
+
+    input, select, button {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 12px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 14px;
+    }
+
+    input:focus, select:focus {
+      border-color: #1e3c72;
+      outline: none;
+      box-shadow: 0 0 5px rgba(30, 60, 114, 0.4);
+    }
+
+    button {
+      background-color: #1e3c72;
+      color: white;
+      border: none;
+      cursor: pointer;
+      font-weight: bold;
+      transition: background 0.3s;
+    }
+
+    button:hover {
+      background-color: #2a5298;
+    }
+
+    .note {
+      font-size: 12px;
+      color: #666;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="form-container">
+    <h2>Form Registrasi Mahasiswa</h2>
+    <form>
+      <label>Nama Mahasiswa:</label>
+      <input list="namaList" name="nama" placeholder="Ketik nama..." required>
+      <datalist id="namaList">
+        <option value="Andi">
+        <option value="Budi">
+        <option value="Citra">
+        <option value="Dewi">
+        <option value="Eko">
+      </datalist>
+
+      <label>NIM:</label>
+      <input type="text" name="nim" placeholder="Masukkan NIM" required>
+
+      <label>Mata Kuliah:</label>
+      <input type="text" name="matkul" placeholder="Masukkan mata kuliah" required>
+
+      <label>Dosen:</label>
+      <input type="text" name="dosen" placeholder="Masukkan nama dosen" required>
+
+      <button type="submit">Daftar</button>
+      <p class="note">Pastikan data yang diisi sudah benar ✅</p>
+    </form>
+  </div>
+</body>
+</html>

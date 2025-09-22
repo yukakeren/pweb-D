@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Pencarian Kode Pos Indonesia</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #242c38;
+      margin: 0;
+      padding: 20px;
+    }
+
+    .container {
+      background: #fff;
+      max-width: 600px;
+      margin: auto;
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0 6px 14px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+      text-align: center;
+      color: #1e3c72;
+    }
+
+    label {
+      display: block;
+      margin-top: 15px;
+      font-weight: bold;
+      color: #333;
+    }
+
+    select {
+      width: 100%;
+      padding: 10px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      margin-top: 5px;
+    }
+
+    #output {
+      margin-top: 20px;
+      padding: 15px;
+      background: #eaf4ff;
+      border-left: 5px solid #1e3c72;
+      border-radius: 8px;
+      display: none;
+    }
+  </style>
+  <script>
+    const dataKodePos = {
+      "Jawa Timur": {
+        "Surabaya": {
+          "Tegalsari": { kode: "60262", info: "Kota Surabaya, Jawa Timur" },
+          "Wonokromo": { kode: "60243", info: "Kota Surabaya, Jawa Timur" }
+        },
+        "Malang": {
+          "Lowokwaru": { kode: "65141", info: "Kota Malang, Jawa Timur" },
+          "Klojen": { kode: "65111", info: "Kota Malang, Jawa Timur" }
+        }
+      },
+      "DKI Jakarta": {
+        "Jakarta Selatan": {
+          "Kebayoran Baru": { kode: "12110", info: "Jakarta Selatan, DKI Jakarta" },
+          "Setiabudi": { kode: "12910", info: "Jakarta Selatan, DKI Jakarta" }
+        }
+      }
+    };
+
+    function updateKabupaten() {
+      const provinsi = document.getElementById("provinsi").value;
+      const kabupaten = document.getElementById("kabupaten");
+      kabupaten.innerHTML = "<option value=''>-- Pilih Kabupaten/Kota --</option>";
+      document.getElementById("kecamatan").innerHTML = "<option value=''>-- Pilih Kecamatan --</option>";
+      document.getElementById("output").style.display = "none";
+
+      if (provinsi && dataKodePos[provinsi]) {
+        Object.keys(dataKodePos[provinsi]).forEach(kab => {
+          kabupaten.innerHTML += `<option value="${kab}">${kab}</option>`;
+        });
+      }
+    }
+
+    function updateKecamatan() {
+      const provinsi = document.getElementById("provinsi").value;
+      const kabupaten = document.getElementById("kabupaten").value;
+      const kecamatan = document.getElementById("kecamatan");
+      kecamatan.innerHTML = "<option value=''>-- Pilih Kecamatan --</option>";
+      document.getElementById("output").style.display = "none";
+
+      if (provinsi && kabupaten && dataKodePos[provinsi][kabupaten]) {
+        Object.keys(dataKodePos[provinsi][kabupaten]).forEach(kec => {
+          kecamatan.innerHTML += `<option value="${kec}">${kec}</option>`;
+        });
+      }
+    }
+
+    function tampilKodePos() {
+      const provinsi = document.getElementById("provinsi").value;
+      const kabupaten = document.getElementById("kabupaten").value;
+      const kecamatan = document.getElementById("kecamatan").value;
+      const output = document.getElementById("output");
+
+      if (provinsi && kabupaten && kecamatan) {
+        const data = dataKodePos[provinsi][kabupaten][kecamatan];
+        output.style.display = "block";
+        output.innerHTML = `
+          <b>Kode Pos:</b> ${data.kode} <br>
+          <b>Daerah:</b> ${data.info}
+        `;
+      }
+    }
+  </script>
+</head>
+<body>
+  <div class="container">
+    <h2>Pencarian Kode Pos Indonesia</h2>
+
+    <label for="provinsi">Provinsi:</label>
+    <select id="provinsi" onchange="updateKabupaten()">
+      <option value="">-- Pilih Provinsi --</option>
+      <option value="Jawa Timur">Jawa Timur</option>
+      <option value="DKI Jakarta">DKI Jakarta</option>
+    </select>
+
+    <label for="kabupaten">Kabupaten/Kota:</label>
+    <select id="kabupaten" onchange="updateKecamatan()"></select>
+
+    <label for="kecamatan">Kecamatan:</label>
+    <select id="kecamatan" onchange="tampilKodePos()"></select>
+
+    <div id="output"></div>
+  </div>
+</body>
+</html>
