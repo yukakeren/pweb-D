@@ -7,6 +7,7 @@ Dibangun menggunakan **Tailwind CSS** dengan desain minimalis, responsif, dan pr
 
 ![demo](image.png)
 
+**src**: [landingpage.html](landing.html)
 ## Fitur Landing Page
 - **Hero Section**
   - Headline + tagline
