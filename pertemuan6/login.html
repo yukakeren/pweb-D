@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login & Register - Glassmorphism Slide</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    body, html {
+      height: 100%;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #74ABE2, #5563DE);
+      background-size: cover;
+      overflow: hidden;
+    }
+
+    .bg-overlay {
+      background: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1200&q=80') no-repeat center center/cover;
+      filter: blur(12px);
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      z-index: 1;
+    }
+
+    .login-container {
+      position: relative;
+      z-index: 2;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .card-wrapper {
+      position: relative;
+      width: 420px;
+      height: 470px;
+      background: rgba(255, 255, 255, 0.15);
+      box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+      backdrop-filter: blur(10px);
+      border-radius: 20px;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      overflow: hidden;
+    }
+
+    .form-container {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      padding: 40px;
+      color: white;
+      transition: all 0.8s ease;
+    }
+
+    .form-container h3 {
+      text-align: center;
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+    }
+
+    .form-control {
+      background: rgba(255, 255, 255, 0.2);
+      border: none;
+      border-radius: 12px;
+      color: white;
+      padding: 12px;
+      transition: all 0.3s ease;
+    }
+
+    .form-control::placeholder {
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    .form-control:focus {
+      background: rgba(255, 255, 255, 0.3);
+      outline: none;
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.4);
+      transform: scale(1.03);
+      color: #fff;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #6EE7B7, #3B82F6);
+      border: none;
+      border-radius: 12px;
+      font-weight: 600;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px) scale(1.05);
+      box-shadow: 0 8px 16px rgba(59, 130, 246, 0.4);
+    }
+
+    .text-small a {
+      color: rgba(255, 255, 255, 0.8);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .text-small a:hover {
+      color: #fff;
+    }
+
+    /* Animation positions */
+    .login-form {
+      left: 0;
+    }
+
+    .register-form {
+      left: 100%;
+    }
+
+    .card-wrapper.active .login-form {
+      left: -100%;
+      opacity: 0;
+    }
+
+    .card-wrapper.active .register-form {
+      left: 0;
+      opacity: 1;
+    }
+
+    .floating-elements span {
+      position: absolute;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.15);
+      animation: float 10s infinite ease-in-out;
+    }
+
+    .floating-elements span:nth-child(1) { width: 100px; height: 100px; left: 10%; top: 20%; animation-delay: 0s; }
+    .floating-elements span:nth-child(2) { width: 60px; height: 60px; right: 15%; top: 40%; animation-delay: 2s; }
+    .floating-elements span:nth-child(3) { width: 80px; height: 80px; left: 30%; bottom: 15%; animation-delay: 4s; }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-20px); }
+    }
+  </style>
+</head>
+<body>
+  <div class="bg-overlay"></div>
+  <div class="floating-elements">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+
+  <div class="login-container">
+    <div class="card-wrapper" id="cardWrapper">
+      <!-- Login Form -->
+      <div class="form-container login-form">
+        <h3>Welcome Back!</h3>
+        <form>
+          <div class="mb-3">
+            <label for="email" class="form-label">Email address</label>
+            <input type="email" class="form-control" id="email" placeholder="Enter your email" required>
+          </div>
+          <div class="mb-3">
+            <label for="password" class="form-label">Password</label>
+            <input type="password" class="form-control" id="password" placeholder="Enter your password" required>
+          </div>
+          <div class="d-flex justify-content-between align-items-center mb-3">
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" id="remember">
+              <label class="form-check-label" for="remember">Remember me</label>
+            </div>
+            <a href="#" class="text-small">Forgot password?</a>
+          </div>
+          <button type="submit" class="btn btn-primary w-100 py-2">Sign In</button>
+          <p class="text-center mt-3 text-small">Don’t have an account? <a href="#" id="showRegister">Register here</a></p>
+        </form>
+      </div>
+
+      <!-- Register Form -->
+      <div class="form-container register-form">
+        <h3>Create Account</h3>
+        <form>
+          <div class="mb-3">
+            <label for="name" class="form-label">Full Name</label>
+            <input type="text" class="form-control" id="name" placeholder="Enter your full name" required>
+          </div>
+          <div class="mb-3">
+            <label for="registerEmail" class="form-label">Email address</label>
+            <input type="email" class="form-control" id="registerEmail" placeholder="Enter your email" required>
+          </div>
+          <div class="mb-3">
+            <label for="registerPassword" class="form-label">Password</label>
+            <input type="password" class="form-control" id="registerPassword" placeholder="Create a password" required>
+          </div>
+          <button type="submit" class="btn btn-primary w-100 py-2">Register</button>
+          <p class="text-center mt-3 text-small">Already have an account? <a href="#" id="showLogin">Login here</a></p>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const cardWrapper = document.getElementById('cardWrapper');
+    const showRegister = document.getElementById('showRegister');
+    const showLogin = document.getElementById('showLogin');
+
+    showRegister.addEventListener('click', (e) => {
+      e.preventDefault();
+      cardWrapper.classList.add('active');
+    });
+
+    showLogin.addEventListener('click', (e) => {
+      e.preventDefault();
+      cardWrapper.classList.remove('active');
+    });
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

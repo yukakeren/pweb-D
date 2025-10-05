@@ -6,4 +6,5 @@
 3. Minggu ketiga: [Form, table, and grid](pertemuan3/README.md)
 4. Minggu keempat: [CSS](pertemuan4/README.md)
 5. Minggu kelima: [Form](pertemuan5/README.md)
+6. Minggu keenam: [Bootsrap](pertemuan6/readme.md)
 
