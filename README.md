@@ -7,4 +7,5 @@
 4. Minggu keempat: [CSS](pertemuan4/README.md)
 5. Minggu kelima: [Form](pertemuan5/README.md)
 6. Minggu keenam: [Bootsrap](pertemuan6/readme.md)
+7. Minggu ketujug: [Ajax](pertemuan7/README.md)
 
